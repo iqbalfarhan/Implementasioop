@@ -9,6 +9,7 @@ class HomeController
 {
     public function index()
     {
+        // echo $_SERVER['PATH_INFO'];
         View::render('welcome');
     }
 

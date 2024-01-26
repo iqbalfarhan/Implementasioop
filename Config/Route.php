@@ -5,12 +5,13 @@ class Route
 {
     public static $routes = [];
 
-    public static function add($reqmethod, $path, $controller, $method){
+    public static function add($reqmethod, $path, $controller, $method, $middleware = []){
         self::$routes[] = [
             'reqmethod' => $reqmethod,
             'path' => $path,
             'controller' => $controller,
-            'method' => $method
+            'method' => $method,
+            'middleware' => $middleware,
         ];
     }
 
@@ -25,6 +26,12 @@ class Route
 
         foreach (self::$routes as $route) {
             if ($route['path'] == $path && $route['reqmethod'] == $reqmethod) {
+
+                foreach ($route['middleware'] as $md) {
+                    $middle = new $md;
+                    $middle->before();
+                }
+
                 $controller = new $route['controller'];
                 $method = $route['method'];
                 $controller->$method();
