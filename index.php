@@ -1,35 +1,22 @@
 <?php
 
-use Model\User;
-
 ini_set("display_errors", true);
 
-
+require "Config/Route.php";
+require "Config/View.php";
 require "Config/Database.php";
 require "Model/User.php";
+require "Controller/UserController.php";
+require "Controller/HomeController.php";
 
-$users = (new User())->get();
+use Config\Route;
+use Controller\HomeController;
+use Controller\UserController;
 
-?>
-<table border="1" cellpadding="5px">
-    <thead>
-        <th>No</th>
-        <th>Name</th>
-        <th>Alamat</th>
-        <th>JK</th>
-    </thead>
-    <tbody>
-        <?php
-        foreach ($users as $user) {
-            ?>
-            <tr>
-                <td><?= $user['id'] ?></td>
-                <td><?= $user['name'] ?></td>
-                <td><?= $user['alamat'] ?></td>
-                <td><?= $user['jenis_kelamin'] ?></td>
-            </tr>
-            <?php
-        }
-        ?>
-    </tbody>
-</table>
+Route::add("GET", "/", HomeController::class, 'index');
+Route::add("GET", "/about", HomeController::class, 'about');
+Route::add("GET", "/uts", HomeController::class, 'uts');
+Route::add("GET", "/user", UserController::class, 'index');
+Route::add("GET", "/user/create", UserController::class, 'create');
+
+Route::run();
