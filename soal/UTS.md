@@ -25,3 +25,6 @@ Buatlah sebuah Class untuk Produk, Laptop, dan Monitor. berikut adalah deskripsi
 
 ## Penilaian
 Penilaian didasarkan pada kemampuan objek untuk ditampilkan dengan benar, kebersihan penulisan kode, dan kreativitas dalam menggunakan komponen dari OOP PHP.
+
+## Pengumpulan jawaban
+kirimkan file php dengan format nama file : nama_lengkap_jawaban_uts.php. kirimkan ke email iqbalfarhan1996@gmail.com dengan subject **Jawaban UTS OOP ASE01**
